@@ -10,17 +10,17 @@ def test_default():
     def f(x):
         return x*(2**x)
     x0, y0 = bisection(f, a, b)
-    assert abs(f(x0)) <= 1e-3
+    assert abs(f(x0[-1])) <= 1e-3
 
 def test_quartic():
     # Test of a window w/ multiple zeros
-    a = -0.5
+    a = -2
     b = 3
     def f(x):
-        return x**4 - 2*x**3 - x**2 + x
+        return x**5 - x**4 - 2*x**3 - x**2 + x + 1
     
     x0, y0 = bisection(f, a, b)
-    assert abs(f(x0)) <= 1e-3
+    assert abs(f(x0[-1])) <= 1e-3
 
 def test_double_input():
     # Tests checking how many inputs a function can have

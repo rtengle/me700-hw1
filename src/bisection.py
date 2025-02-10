@@ -28,21 +28,24 @@ def bisection(f, a, b, tol=1e-3, N:int=50):
     
     # Actual bisection method.
 
+    m = []
+    M = []
+
     for i in range(N):
         # Finds midpoint m and its function value M=f(m)
-        m = (a+b)/2
-        M = f(m)
+        m += [(a+b)/2]
+        M += [f(m[-1])]
         # Checks for convergence
-        if abs(M) <= tol:
+        if abs(M[-1]) <= tol:
             print("Converged after %i iterations" % i)
             return m, M
         # Sees if the midpoint should replace a or b
-        if np.sign(M) == np.sign(A):
-            a = m
-            A = M
+        if np.sign(M[-1]) == np.sign(A):
+            a = m[-1]
+            A = M[-1]
         else:
-            b = m
-            B = M
+            b = m[-1]
+            B = M[-1]
     
     # Failsafe in case of non-convergence.
     print("Maximum number of iterations reached without converging.")
