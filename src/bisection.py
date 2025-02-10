@@ -22,9 +22,9 @@ def bisection(f, a, b, tol=1e-3, N:int=50):
 
     # Checks if a zero is at a or b.
     if A == 0:
-        return a
+        return [a], [A]
     if B == 0:
-        return b
+        return [b], [B]
     
     # Actual bisection method.
 
