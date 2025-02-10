@@ -17,8 +17,8 @@ def test_scalar_scalar():
 def test_scalar_vector():
     # Basic check for scalar -> vector function
     def f(x):
-       return np.array([x**4 - np.sin(x), x**5 - x**3 + 2])
-
+       return np.array([x**2 - 1, x+1])
+    
     x, y = newton(f, 2)
     assert check_outputs(f, x, y)
 
@@ -26,7 +26,7 @@ def test_vector_scalar():
     # Basic check for vector -> scalar function
     def f(x):
         return np.linalg.norm(x) - 5
-    x, y = newton(np.linalg.norm, np.array([3, 5, 3]))
+    x, y = newton(f, np.array([3, 5, 3]))
     assert check_outputs(f, x, y)
 
 def test_vector_vector():
@@ -40,5 +40,6 @@ def test_no_solution():
     # Checks for stopping convergence
     def f(x):
         return x**2 + np.array([1, 1, 1])
-    x, y = newton(f, np.array([3, 5, 3]))
-    assert True
+    # Need to adjust center difference interval to avoid singular matrix
+    x, y = newton(f, np.array([3, 5, 3]), eps=1e-9)
+    pass

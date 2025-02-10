@@ -133,3 +133,11 @@ def newton(f: Callable[[np.ndarray], np.ndarray], x0: np.ndarray, tol:float = 1e
             return x, y
 
     return x, y
+
+# Basic check for vector -> scalar function
+def f(x):
+    return np.array([x**4 - np.sin(x), x**5 - x**3 + 2])
+
+x, y = newton(f, 2)
+print(x)
+print(y)
