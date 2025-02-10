@@ -72,14 +72,15 @@ def floatarray_extract(x):
     else:
         return x
 
-def newton(f: Callable[[np.ndarray], np.ndarray], x0: np.ndarray, tol:float = 1e-6, maxiter:int = 50):
+def newton(f: Callable[[np.ndarray], np.ndarray], x0: np.ndarray, tol:float = 1e-6, maxiter:int = 50, eps=2.22e-16):
     """Finds the value value y = f(x) where norm(y) = 0. 
 
     Args:
         f: Input function f(x). Input and output must be 1D vectors as ndarray.
         x0: Initial guess for the method.
         tol: Convergence tolerance for bisection method. Default 1e-6, must be positive.
-        N (int): Maximum number of loops. Default 50, must be positive.
+        N (int): Maximum number of loops. Default 50. Must be positive.
+        eps: Interval scaling factor used in center difference method. Must be positive.
     
     Returns:
         x: List of guesses
@@ -113,7 +114,7 @@ def newton(f: Callable[[np.ndarray], np.ndarray], x0: np.ndarray, tol:float = 1e
     # Main iterative loop
     for i in range(maxiter):
         # Calculates the Jacobian of the function at the input
-        J = jacobian(f, x[i])
+        J = jacobian(f, x[i], eps=eps)
         # Performs the relevant generalized inverse as described in the README then appends the change to the guess list
         if Nx == Nf:
             # Square inverse

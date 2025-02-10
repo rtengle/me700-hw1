@@ -20,7 +20,8 @@ dependencies = [
     "numpy==1.26.4",
     "pytest==7.1.2",
     "pytest-cov==3.0.0",
-    "pytest-timeout==2.2.0"
+    "pytest-timeout==2.2.0",
+    "matplotlib==3.10.0"
 ]
 
 [project.urls]
