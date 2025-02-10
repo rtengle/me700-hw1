@@ -43,3 +43,56 @@ def test_no_solution():
     # Need to adjust center difference interval to avoid singular matrix
     x, y = newton(f, np.array([3, 5, 3]), eps=1e-9)
     pass
+
+def test_bad_tol():
+    # Basic check for scalar -> scalar function
+    def f(x):
+       return x**5 - x**3 + 2
+    with pytest.raises(Exception) as exc_info:
+        newton(f, 2, tol=-3e-4)
+
+    assert "Tolerance" in str(exc_info.value)
+
+def test_bad_maxiter():
+    # Basic check for scalar -> scalar function
+    def f(x):
+       return x**5 - x**3 + 2
+    with pytest.raises(Exception) as exc_info:
+        newton(f, 2, maxiter=-3)
+
+    assert "Maximum" in str(exc_info.value)
+
+def test_bad_eps():
+    # Basic check for scalar -> scalar function
+    def f(x):
+       return x**5 - x**3 + 2
+    with pytest.raises(Exception) as exc_info:
+        newton(f, 2, eps=-3e-4)
+
+    assert "Epsilon" in str(exc_info.value)
+
+def test_bad_input():
+    # Basic check for scalar -> scalar function
+    def f(x):
+       return x**5 - x**3 + 2
+    with pytest.raises(Exception) as exc_info:
+        newton(f, np.array([[3, 4],[3, 4]]))
+
+    assert "Input" in str(exc_info.value)
+
+def test_bad_output():
+    # Basic check for scalar -> scalar function
+    def f(x):
+       return np.array([x, x])
+    with pytest.raises(Exception) as exc_info:
+        newton(f, np.array([3, 4]))
+
+    assert "Function output" in str(exc_info.value)
+
+def test_instant_return():
+    def f(x):
+        return x*np.exp(x)
+    
+    x, y = newton(f, 0)
+
+    assert x[-1] == 0

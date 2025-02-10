@@ -28,6 +28,7 @@ def test_double_input():
     b = 6
     def f(x, y):
         return x + y
+    f(2, 3)
     
     with pytest.raises(Exception) as exc_info:
         bisection(f, a, b)
@@ -94,7 +95,7 @@ def test_step():
     x0, y0 = bisection(f, a, b)
     pass
 
-def test_autosuccess_1():
+def test_autosuccess_a():
     a = -1
     b = 2
 
@@ -103,7 +104,7 @@ def test_autosuccess_1():
     x0, y0 = bisection(f, a, b)
     assert x0[-1] == a
 
-def test_autosuccess_1():
+def test_autosuccess_b():
     a = -2
     b = 1
 

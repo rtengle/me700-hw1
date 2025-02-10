@@ -2,10 +2,6 @@ import numpy as np
 from numpy import linalg as la
 from typing import Callable
 
-# Defines an example 
-def example_function(x: np.ndarray):
-    return x ** 2
-
 def jacobian(f: Callable[[np.ndarray], np.ndarray], x: np.ndarray, eps:float=2.22e-16) -> np.ndarray:
     """Computes the Jacobian matrix for a function f(x) based on an input x using the center difference method.
 
@@ -92,10 +88,12 @@ def newton(f: Callable[[np.ndarray], np.ndarray], x0: np.ndarray, tol:float = 1e
     y = [floatarray_convert(f(x0))]
 
     # Checks tolerance and maxiter for proper ranges
-    if tol<0:
+    if tol<=0:
         raise Exception('Tolerance must be positive')
     if maxiter <= 0:
         raise Exception('Maximum number of iterations must be positive')
+    if eps <= 0:
+        raise Exception('Epsilon parameter must be positive')
     
     # Checks to make sure input and output are 1D
     if len(x[0].shape) > 1:
