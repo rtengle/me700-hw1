@@ -85,12 +85,14 @@ class EPMaterial:
             raise Exception('Secondary modulus was not specified as tangent (\'T\') or plastic (\'P\').')
         
         # Specifies specific hardening model
-        if model == 'K' or model == 'l' or model == 'Kinematic' or model == 'kinematic':
+        if model == 'K' or model == 'k' or model == 'Kinematic' or model == 'kinematic':
             self.modelname = 'Kinematic'
             self.deformation_plastic = kinematic
         elif model == 'I' or model == 'i' or model == 'Isotropic' or model == 'isotropic':
             self.modelname = 'Isotropic'
             self.deformation_plastic = isotropic
+        elif type(model) == str:
+            raise Exception('Unrecognized default hardening model.')
         else:
             self.modelname = 'Custom'
             self.deformation_plastic = model
@@ -148,4 +150,4 @@ Current Yield Center: %f""") % (self.modelname, self.E, self.Et, self.stress, se
                 Y0: Current yield strength
                 alpha: Current yield center
         """
-        return (self.stress, self.strain, self.pstrain, self.Y0, self.alpha)
+        return [self.stress, self.strain, self.pstrain, self.Y0, self.alpha]
