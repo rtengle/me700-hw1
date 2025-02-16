@@ -1,16 +1,25 @@
+# ME700 HW1
 
-# Overview
+[![python](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
+![os](https://img.shields.io/badge/os-ubuntu%20|%20macos%20|%20windows-blue.svg)
+[![license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/sandialabs/sibl#license)
+
+[![codecov](https://codecov.io/gh/rtengle/me700-hw1/graph/badge.svg?token=V8BG4FHMD7)](https://codecov.io/gh/rtengle/me700-hw1)
+[![tests](https://github.com/rtengle/me700-hw1/actions/workflows/tests.yml/badge.svg)](https://github.com/rtengle/me700-hw1/actions)
+---
+
+## Overview
 
 This repository contains code for Assignment 1 in ME 700, including functions for the Bisection Method and Newton's method for finding zeros. These are called from the ```src.zeros.py``` file.
 
-# Bisection Method Algorithm
+## Bisection Method Algorithm
 
 1. Starting with a function $f(x)$ with two guesses $A = f(a)$ and $B=f(b)$ where $\text{sign}(a) \neq \text{sign}(b)$.
 2. Determine the current interval's midpoint $m = \frac{a+b}{2}$ and its function value $M=f(m)$.
 3. If $M = 0$, return $m$. If $\text{sign}(m) = a$, repeat the method along the interval $x \in [m, b]$. Otherwise, repeat the method along the inverval $x \in [a, m]$.
 4. Repeat this until either the tolerance is reached ($|M| \leq \text{tol}$) or until the stated maximum iterations is reached.
 
-# Newton's Method Algorithm
+## Newton's Method Algorithm
 
 1. Start with a fully differentiable function $\vec{f}(\vec{x}): \mathbb{R}^n\rightarrow \mathbb{R}^m$ and an initial guess $\vec{x}_0 \in \mathbb{R}^n.$
 2. Compute the Jacobian $\mathbf{J}(\vec{f}, \vec{x}_n), $ of the matrix as defined by:
