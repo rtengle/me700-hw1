@@ -10,7 +10,9 @@
 
 ## Overview
 
-This repository contains code for Assignment 1 in ME 700, including functions for the Bisection Method and Newton's method for finding zeros. These are called from the ```src.zeros.py``` file.
+This repository contains code for Assignment 1 in ME 700, including functions for the Bisection Method and Newton's method for finding zeros. These are located in ```bisection.py``` and ```newton.py``` respectively.
+
+In addition, a class representing Elastoplastic materials is included under ```hardening.py```. This class includes the ability to specify material properties, define hardening behavior, and determine how the material evolves under specific changes in strain.
 
 ## Bisection Method Algorithm
 
@@ -41,6 +43,7 @@ where $\mathbf{A}^\mathbb{I}$ is the relevant generalized inverse function for t
   - If $n > m$, then the right-handed inverse is used defined by $\mathbf{A}^\mathbb{I} = \mathbf{A}^T \left( \mathbf{A} \mathbf{A}^T\right)^{-1}$
   - If $n < m$, then the left-handed inverse is used defined by $\mathbf{A}^\mathbb{I} = \left(\mathbf{A}^T \mathbf{A} \right)^{-1} \mathbf{A}$
 4. Iterate until either convergence is reached or the step limit is reached.
+
 # Installation
 
 To install this package, please begin by setting up a conda environment (mamba also works):
