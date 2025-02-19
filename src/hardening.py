@@ -61,7 +61,7 @@ class EPMaterial:
             Ep: Modulus for plastic deformation. Can be either the tangent modulus or plastic modulus.
             modulustype: String specifying which type of modulus it is. Can be shorthanded to 't' or 'p' for tangent and plastic modulus respectively.
             Y0: Initial yield strength.
-            model: Hardening model of the material. Can be specified as either kinetic or isotropic as a string. A custom function can also be passed instead.
+            model: Hardening model of the material. Can be specified as either kinetic or isotropic as a string. A custom function to model plastic hardening can also be passed instead.
             alpha: Starting yield center. Defaults to 0.
             stress: Starting stress. Defaults to 0.
             strain: Starting total strain. Defaults to 0.
