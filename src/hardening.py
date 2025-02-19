@@ -107,6 +107,7 @@ class EPMaterial:
         Returns:
             stress: Elastic stress for the given strain and specified modulus.
         """
+        # Simple linear relationship.
         return self.E*strain
     
     def update_state(self, strain):
@@ -121,7 +122,7 @@ class EPMaterial:
         # Checks if we're in the plastic regime
         eta = self.stress - self.alpha
         state = abs(eta) - self.Y0
-        # Updates the  
+        # Updates the  deformation based on the defined plastic deformation
         if state > 0:
             self.deformation_plastic(self, state)
 
@@ -131,6 +132,7 @@ class EPMaterial:
         Returns: 
             String representation of the object
         """
+        # Just a really long return string.
         return ("""%s Elasto-Plastic Model
 Elastic Module: %f
 Tangent Module: %f
