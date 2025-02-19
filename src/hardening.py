@@ -94,6 +94,7 @@ class EPMaterial:
         elif type(model) == str:
             raise Exception('Unrecognized default hardening model.')
         else:
+            # Adds the custom model as the deformation_plastic function
             self.modelname = 'Custom'
             self.deformation_plastic = model
 
