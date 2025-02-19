@@ -84,7 +84,7 @@ class EPMaterial:
         else:
             raise Exception('Secondary modulus was not specified as tangent (\'T\') or plastic (\'P\').')
         
-        # Specifies specific hardening model
+        # Specifies the hardening model
         if model == 'K' or model == 'k' or model == 'Kinematic' or model == 'kinematic':
             self.modelname = 'Kinematic'
             self.deformation_plastic = kinematic
